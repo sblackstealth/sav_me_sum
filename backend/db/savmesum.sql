@@ -19,9 +19,12 @@ CREATE TABLE users (
 CREATE TABLE events(
     event_id SERIAL PRIMARY KEY,
     date timestamp not null default CURRENT_TIMESTAMP,
+    event_name VARCHAR,
+    email VARCHAR,
     event_type VARCHAR,
     donors VARCHAR[],
     rescuers VARCHAR[],
+    is_veg BOOLEAN,
     attending_foodies VARCHAR[],
     standby_foodies VARCHAR[],
     donations VARCHAR[],
@@ -34,4 +37,14 @@ CREATE TABLE dates(
     event_id FOREIGN KEY,
     event_date
     event_closed BOOLEAN,
+)
+
+CREATE TABLE donations(
+    donation_number SERIAL PRIMARY KEY,
+    donation_name VARCHAR,
+    donor_name VARCHAR,
+    allergens VARCHAR[],
+    is_veg BOOLEAN,
+    rescuers VARCHAR[],
+    events_servedat VARCHAR[],
 )
