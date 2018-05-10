@@ -42,8 +42,8 @@ function getSingleEventDonation(req,res,next){
              FROM users
              JOIN donations ON(users.user_id=donations.user_id)
              JOIN events ON(event.user_id= donations.event_id)
-             WHERE donation=$1 AND user_name=$2 AND event_id =$4`
-             [req.params.eventID]
+             WHERE donation=$1 AND user_name=$2 AND event_id =$3`
+             [req.params.donationName, req.params.userName, req.params.eventID]
         )
         .then (data=>{
             res.json(data);
