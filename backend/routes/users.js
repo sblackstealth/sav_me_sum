@@ -33,12 +33,9 @@ router.get("/allevents/:eventBorough/:isVeg", db.getallAtLeastVegeterianEventsBy
 router.get("/allevents/:eventBorough/:!event_close", db.getOpenEventsByBorough);
 router.get("/allevents/:eventBorough/:event_close", db.getClosedEventsByBorough);
 router.get("/allevents/:date", db.getEventsByDate)
-router.get()
-router.get()
-router.get()
-router.get()
-router.get()
-router.get()
-router.get()
-router.get()
-router.get()
+
+
+/*---------------POST REQUEST----------------------*/ 
+ 
+
+module.exports = router;
