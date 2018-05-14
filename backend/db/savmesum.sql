@@ -14,11 +14,14 @@ CREATE TABLE users (
     good_standing BOOLEAN,
     user_events VARCHAR[],
     needs_training BOOLEAN,
+    training_count VARCHAR,
 );
 
 CREATE TABLE events(
     event_id SERIAL PRIMARY KEY,
     date timestamp not null default CURRENT_TIMESTAMP,
+    event_borough VARCHAR,
+    event_location VARCHAR,
     event_name VARCHAR,
     email VARCHAR,
     event_type VARCHAR,
@@ -48,3 +51,5 @@ CREATE TABLE donations(
     rescuers VARCHAR[],
     events_servedat VARCHAR[],
 )
+
+INSERT INTO users (user_id,user_name)

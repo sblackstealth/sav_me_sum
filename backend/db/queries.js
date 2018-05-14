@@ -19,7 +19,7 @@ function getSingleUser(req,res,next){
             res.json(error);
         })         
 }
-function getSingleEvent(req,res,next){
+function getSingleUserEvent(req,res,next){
     db
         .any(
             `SELECT event_id, event_name, email, event_type, is_veg, good_standing, donors, rescuers, attending_foodies, standby_foodies,donations, event_close, number_ofportions
