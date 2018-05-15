@@ -48,6 +48,7 @@ CREATE TABLE dates(
 
 CREATE TABLE donations(
     donation_number SERIAL PRIMARY KEY,
+    donation_id FOREIGN KEY,
     donation_name VARCHAR,
     donor_name VARCHAR,
     allergens VARCHAR[],
@@ -98,9 +99,9 @@ VALUES (11, "safe supper staten island" "thursday, july 8 2018","true"),
 VALUES (12, "thursday dinner at the food kitchen staten island","thursday, july 8 2018","true");
 
 
-INSERT INTO donations (donation_number, donation_name, donor_name,allergens,is_veg, rescuers,events_servedat)
-VALUES (1,"bagels","starbucks", "gluetin","true",ARRAY["food kitchen1"],1),
-VALUES (2,"parfait","starbucks", null,"true",ARRAY["food kitchen1"],1),
-VALUES (3, "chocolate milk","starbucks", "lactose","false",ARRAY["food kitchen1"],1),
-VALUES (4, "chicken","chipotle",null,"false",ARRAY["Church"],1);
+INSERT INTO donations (donation_number, donation_ id, donation_name, donor_name,allergens,is_veg, rescuers,events_servedat)
+VALUES (1,1,"bagels","starbucks", "gluetin","true",ARRAY["food kitchen1"],1),
+VALUES (2,1,"parfait","starbucks", null,"true",ARRAY["food kitchen1"],1),
+VALUES (3,1, "chocolate milk","starbucks", "lactose","false",ARRAY["food kitchen1"],1),
+VALUES (4,2, "chicken","chipotle",null,"false",ARRAY["Church"],1);
 
