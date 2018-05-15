@@ -54,6 +54,7 @@ CREATE TABLE donations(
     allergens VARCHAR[],
     is_veg BOOLEAN,
     rescuers VARCHAR[],
+    pass_check BOOLEAN,
     events_servedat VARCHAR[],
 )
 
@@ -99,9 +100,9 @@ VALUES (11, "safe supper staten island" "thursday, july 8 2018","true"),
 VALUES (12, "thursday dinner at the food kitchen staten island","thursday, july 8 2018","true");
 
 
-INSERT INTO donations (donation_number, donation_ id, donation_name, donor_name,allergens,is_veg, rescuers,events_servedat)
-VALUES (1,1,"bagels","starbucks", "gluetin","true",ARRAY["food kitchen1"],1),
-VALUES (2,1,"parfait","starbucks", null,"true",ARRAY["food kitchen1"],1),
-VALUES (3,1, "chocolate milk","starbucks", "lactose","false",ARRAY["food kitchen1"],1),
-VALUES (4,2, "chicken","chipotle",null,"false",ARRAY["Church"],1);
+INSERT INTO donations (donation_number, donation_ id, donation_name, donor_name,allergens,is_veg, rescuers,pass_check, events_servedat)
+VALUES (1,1,"bagels","starbucks", "gluetin","true",ARRAY["food kitchen1"], "true", 1),
+VALUES (2,1,"parfait","starbucks", null,"true",ARRAY["food kitchen1"], "true", 1),
+VALUES (3,1, "chocolate milk","starbucks", "lactose","false",ARRAY["food kitchen1"], "true", 1),
+VALUES (4,2, "chicken","chipotle",null,"false",ARRAY["Church"], "true", 1);
 
