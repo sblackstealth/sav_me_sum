@@ -18,39 +18,40 @@ router.get("/profile/:userid/:donations", db.getSingleUserDonations);
 router.get("/profile/:userid/:donations/:donationId", db.getSingleUserDonationById);
 router.get("/alldonations", db.getAllDonations);
 router.get("/alldonations/:donationId", db.getSingleDonationById);
-router.get("/alldonations/:donationId/:allergens", db.getSingleDonationAllegensById);
+router.get("/alldonations/:donationId/:allergens", db.getSingleDonationAllergensById);
 router.get("/allevents", db.getAllEvents);
 router.get("/allevents/:eventId", db.getSingleEventById);
 router.get("/allevents/:eventId/:attendingFoodies", db.getAllAttendingFoodiesByEventId);
 router.get("/allevents/:eventId/:standbyFoodies", db.getAllStandbyFoodiesByEventId);
-router.get("/allevents/:eventId/:attendingVolunteers", db.getAllAttendingVolunteersByEventId);
-router.get("/allevents/:eventId/:standbyVolunteers", db.getAllStandbyVolunteersByEventId);
-router.get("/allevents/:eventBorough", db.getEventsinSingleBorough);
+router.get("/allevents/:eventId/:attendingVolunteers", db.getAllAttendingHelpingHandsByEventId);
+router.get("/allevents/:eventId/:standbyVolunteers", db.getAllStandbyHelpingHandsByEventId);
+router.get("/allevents/:eventBorough", db.getAllEventsinSingleBorough);
 router.get("/allevents/:eventLocation", db.getAllEventsInLocation);
-router.get("/allevents/:eventBorough/:zipcode", db.getEventsByZipcode);
-router.get("/allevents/:eventBorough/:eventType", db.getEventsByTypeInBorough);
-router.get("/allevents/:eventBorough/:isVeg", db.getallAtLeastVegetarianEventsByBorough);
-router.get("/allevents/:eventBorough/:isVeg", db.getallNonAtLeastVegetarianEventsByBorough);
+router.get("/allevents/:eventBorough/:zipcode", db.getAllEventsByZipcode);
+router.get("/allevents/:eventBorough/:eventType", db.getAllEventsByTypeInBorough);
+router.get("/allevents/:eventBorough/:isVeg", db.getAllAtLeastVegetarianEventsByBorough);
+router.get("/allevents/:eventBorough/:isVeg", db.getAllNonAtLeastVegetarianEventsByBorough);
 router.get("/allevents/:eventBorough/:!event_close", db.getAllOpenOrClosedEventsByBorough);
-router.get("/allevents/:date", db.getEventsByDate)
+router.get("/allevents/:date", db.getEventsByDate);
 
 
-/*---------------POST REQUEST----------------------*/ 
-router.post("/login", db.loginUser); 
-router.post("/register", db.registerUser);
+/*---------------POST REQUEST----------------------*/  
+ router.post("/register", db.registerUser);
+ router.post("/login", db.loginUser);
  router.post("/addEvent", loginRequired, db.addEvent);
  router.post("/removeEvent", loginRequired,db.removeEvent);
  router.post("/addDonation", loginRequired, db.addDonation);
+ router.post("/removeDonation", loginRequired, db.removeDonation);
  router.post("/addDonation/allergen",loginRequired, db.addDonationAllergen);
- router.post("/inviteFoodieToEvent", loginRequired, db.inviteFoodieToEvent);
+ router.post("/removeDonation/allergen",loginRequired, db.removeDonationAllergen);
 
  /*--------------PATCH REQUEST-----------------*/
  router.patch("/edit/:userId", loginRequired, db.editUser);
- router.patch("/delete/:userId",loginRequired, db.deleteUser);
+ router.patch("/delete/:userId",loginRequired, db.removeUser);
  router.patch("/edit/eventId", loginRequired, db.editEvent);
- router.patch("/delete/:eventId", loginRequired, db.deleteEvent);
- router.patch("/edit/:donationId",loginRequired, db.editDonation);
- router.patch("/delete/:donationId", loginRequired, db.deleteDonation);
+ router.patch("/remove/:eventId", loginRequired, db.removeEvent);
+ router.patch("/edit/:donationId",loginRequired, db.editDonations);
+ router.patch("/remove/:donationId", loginRequired, db.removeDonation);
  router.patch("/edit/;eventId/:attendingFoodies", loginRequired, db.addAttendingFoodietoEvent);
  router.patch("/edit/:eventId/:standbyFoodies", loginRequired, db.addStandbyFoodietoEvent);
  router.patch("/edit/:eventId/:attendingHelpingHands", loginRequired, db.addAttendingHelpingHandToEvent);
