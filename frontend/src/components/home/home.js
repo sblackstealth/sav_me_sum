@@ -1,13 +1,34 @@
 import React, { Component } from 'react';
+import axios from "axios"
+import DistributionEvent from '../calendar/distributionEvents';
+import RescueEvent from '../calendar/rescueEvents';
 
-class Home extends Component {
+class Home extends React.Component {
+
   render() {
-    return (
-      <div className="home">
-        <p>Hello from home.js component!</p>
-      </div>
-    );
-  }
+    let user = this.props.user;
+    // let userType = user.user_type;
+    // if (userType=== "donor"||userType==="rescuer") {
+    //   return (
+    //     <div className="DistributionEventCalendar">
+    //       <DistributionEvent />         
+    //     </div>
+    //   );
+    // } else if(userType=== "volunteer"||userType==="foodie"){
+    //   return (
+    //     <div className="RescueEventCalendar">
+    //     <RescueEvent/>
+        
+    //     </div>
+    //   )
+    // } else {
+        return (<div>No user
+          {/* <RescuerAffidavit/>
+          <FoodieHelpingHandAffidavit/> */}
+        </div>)
+  //   }
+  // }
+}
 }
 
-export default home;
+export default Home;

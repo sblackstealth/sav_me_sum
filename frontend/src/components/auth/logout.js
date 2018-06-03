@@ -10,4 +10,5 @@ class LogOut extends Component {
   }
 }
 
-export default logOut;
+export default LogOut;
+
