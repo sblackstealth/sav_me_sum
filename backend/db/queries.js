@@ -9,7 +9,7 @@ function getSingleUser(req, res, next) {
         .one(
             `SELECT user_id, user_name, email, user_type, user_level, is_veg, good_standing, user_events, needs_training
              FROM users
-             WHERE user_id=$1` [req.params.userId]
+             WHERE user_id=$1`, [req.params.userId]
         )
         .then(data => {
             res.json(data);
@@ -24,7 +24,7 @@ function getSingleUserLevel(req, res, next) {
         .one(
             `SELECT user_level
              FROM users
-             WHERE user_id=$1` [req.params.userId]
+             WHERE user_id=$1`, [req.params.userId]
         )
         .then(data => {
             res.json(data);
@@ -39,7 +39,7 @@ function getSingleUserEventList(req, res, next) {
         .one(
             `SELECT user_events
              FROM users
-             WHERE user_id=$1` [req.params.eventId]
+             WHERE user_id=$1`, [req.params.eventId]
         )
         .then(data => {
             res.json(data);
@@ -54,7 +54,7 @@ function getSingleUserSingleEvent(req, res, next) {
         .one(
             `SELECT event_id, event_name, email, event_type, is_veg, good_standing, donors, rescuers, attending_foodies, standby_foodies,donations, event_close, number_ofportions
              FROM events
-             WHERE event_id=$1` [req.params.eventId]
+             WHERE event_id=$1`, [req.params.eventId]
         )
         .then(data => {
             res.json(data);
@@ -69,7 +69,7 @@ function getSingleUserType(req, res, next) {
         .one(
             `SELECT user_type
              FROM users
-             WHERE user_id=$1` [req.params.userId]
+             WHERE user_id=$1`, [req.params.userId]
         )
         .then(data => {
             res.json(data);
@@ -84,7 +84,7 @@ function getSingleUserIsVeg(req, res, next) {
         .one(
             `SELECT is_veg
              FROM users
-             WHERE user_id=$1` [req.params.userId]
+             WHERE user_id=$1`, [req.params.userId]
         )
         .then(data => {
             res.json(data);
@@ -99,7 +99,7 @@ function getSingleUserGoodStanding(req, res, next) {
         .one(
             `SELECT good_standing
              FROM users
-             WHERE user_id=$1` [req.params.userId]
+             WHERE user_id=$1`, [req.params.userId]
         )
         .then(data => {
             res.json(data);
@@ -114,7 +114,7 @@ function getSingleUserNeedsTraining(req, res, next) {
         .one(
             `SELECT needs_training
              FROM users
-             WHERE user_id=$1` [req.params.userId]
+             WHERE user_id=$1`, [req.params.userId]
         )
         .then(data => {
             res.json(data);
@@ -129,7 +129,7 @@ function getSingleUserTrainingCount(req, res, next) {
         .one(
             `SELECT training_count
              FROM users
-             WHERE user_id=$1` [req.params.userId]
+             WHERE user_id=$1`, [req.params.userId]
         )
         .then(data => {
             res.json(data);
@@ -144,7 +144,7 @@ function getSingleUserDonations(req, res, next) {
         .one(
             `SELECT *
              FROM donations
-             WHERE user_id=$1` [req.params.userId]
+             WHERE user_id=$1`, [req.params.userId]
         )
         .then(data => {
             res.json(data);
@@ -159,7 +159,7 @@ function getSingleUserDonation(req, res, next) {
         .one(
             `SELECT *
              FROM donations
-             WHERE  user_id=$1, donation_id=$2` [req.params.userId, req.params.donationId]
+             WHERE  user_id=$1, donation_id=$2` ,[req.params.userId, req.params.donationId]
         )
         .then(data => {
             res.json(data);
@@ -174,7 +174,7 @@ function getSingleDonationById(req, res, next) {
         .one(
             `SELECT *
              FROM donations
-             WHERE donation_id=$1` [req.params.donationId]
+             WHERE donation_id=$1`, [req.params.donationId]
         )
         .then(data => {
             res.json(data);
@@ -203,7 +203,7 @@ function getSingleDonationAllergensById(req, res, next) {
         .one(
             `SELECT allergens
              FROM donations
-             WHERE donation_id=$1` [req.params.donationId]
+             WHERE donation_id=$1`, [req.params.donationId]
         )
         .then(data => {
             res.json(data);
@@ -232,7 +232,7 @@ function getSingleEventById(req, res, next) {
         .one(
             `SELECT *
              FROM events
-             WHERE event_id=$1` [req.params.eventId]
+             WHERE event_id=$1`, [req.params.eventId]
         )
         .then(data => {
             res.json(data);
@@ -247,7 +247,7 @@ function getAllattendingFoodiesByEventId(req, res, next) {
         .any(
             `SELECT attending_foodies
              FROM events
-             WHERE event_id=$1` [req.params.eventId]
+             WHERE event_id=$1`, [req.params.eventId]
         )
         .then(data => {
             res.json(data);
@@ -262,7 +262,7 @@ function getAllStandbyFoodiesByEventId(req, res, next) {
         .any(
             `SELECT standby_foodies
              FROM events
-             WHERE event_id=$1` [req.params.eventId]
+             WHERE event_id=$1`, [req.params.eventId]
         )
         .then(data => {
             res.json(data);
@@ -277,7 +277,7 @@ function getAllAttendingHelpingHAndsByEventId(req, res, next) {
         .any(
             `SELECT attending_volunteers
              FROM events
-             WHERE event_id=$1` [req.params.eventId]
+             WHERE event_id=$1`, [req.params.eventId]
         )
         .then(data => {
             res.json(data);
@@ -293,7 +293,7 @@ function getAllStandbyHelpingHandsByEventId(req, res, next) {
         .any(
             `SELECT standby_volunteers
              FROM events
-             WHERE event_id=$1` [req.params.eventId]
+             WHERE event_id=$1`, [req.params.eventId]
         )
         .then(data => {
             res.json(data);
@@ -308,7 +308,7 @@ function getAllEventsInSingleBorough(req, res, next) {
         .any(
             `SELECT *
              FROM events
-             WHERE event_borough=$1` [req.params.eventBorough]
+             WHERE event_borough=$1`, [req.params.eventBorough]
         )
         .then(data => {
             res.json(data);
@@ -323,7 +323,7 @@ function getAllEventsInLocation(req, res, next) {
         .any(
             `SELECT *
              FROM events
-             WHERE event_location=$1` [req.params.eventLocation]
+             WHERE event_location=$1`, [req.params.eventLocation]
         )
         .then(data => {
             res.json(data);
@@ -338,7 +338,7 @@ function getAllEventsByZipcode(req, res, next) {
         .any(
             `SELECT *
              FROM events
-             WHERE event_zipcode=$1` [req.params.eventZipcode]
+             WHERE event_zipcode=$1`, [req.params.eventZipcode]
         )
         .then(data => {
             res.json(data);
@@ -353,7 +353,7 @@ function getAllEventsByTypeInBorough(req, res, next) {
         .any(
             `SELECT *
              FROM events
-             WHERE event_borough=$1,event_type=$2` [req.params.eventBorough, req.params.eventType]
+             WHERE event_borough=$1,event_type=$2` ,[req.params.eventBorough, req.params.eventType]
         )
         .then(data => {
             res.json(data);
@@ -368,7 +368,7 @@ function getAllAtLeastVegetarianEventsByBorough(req, res, next) {
         .any(
             `SELECT *
              FROM events
-             WHERE is_veg = true` [req.params.eventZipcode]
+             WHERE is_veg = true`, [req.params.eventZipcode]
         )
         .then(data => {
             res.json(data);
@@ -383,7 +383,7 @@ function getAllNonAtLeastVegetarianEventsByBorough(req, res, next) {
         .any(
             `SELECT *
              FROM events
-             WHERE is_veg = false` [req.params.eventZipcode]
+             WHERE is_veg = false` ,[req.params.eventZipcode]
         )
         .then(data => {
             res.json(data);
@@ -398,7 +398,7 @@ function getAllOpenOrClosedEventsByBorough(req, res, next) {
         .any(
             `SELECT *
              FROM events
-             WHERE event_closed =$1` [req.params.eventClosed]
+             WHERE event_closed =$1`, [req.params.eventClosed]
         )
         .then(data => {
             res.json(data);
@@ -413,7 +413,7 @@ function getEventsByDate(req, res, next) {
         .any(
             `SELECT *
              FROM events
-             WHERE event_date =$1` [req.params.eventDate]
+             WHERE event_date =$1`, [req.params.eventDate]
         )
         .then(data => {
             res.json(data);
@@ -584,7 +584,7 @@ function editUser(req, res, next) {
 function removeUser(req, res, next) {
     return db
         .none(
-            "DELETE FROM users WHERE userId=$1 ", [req.params.userId])
+            'DELETE FROM users WHERE userId=$1', [req.params.userId])
         .then(data => {
             res.json("removed");
         })

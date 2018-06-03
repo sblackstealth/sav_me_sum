@@ -10,4 +10,4 @@ class RegisterUser extends Component {
   }
 }
 
-export default registerUser;
+export default RegisterUser;

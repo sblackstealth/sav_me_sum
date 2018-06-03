@@ -10,4 +10,4 @@ class RemoveUser extends Component {
   }
 }
 
-export default removeUser;
+export default RemoveUser;
