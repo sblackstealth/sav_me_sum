@@ -4,6 +4,9 @@ import SetUser from '../../App';
 import DistributionEvent from '../calendar/distributionEvents';
 import RescueEvent from '../calendar/rescueEvents';
 import NoUser from './nouser';
+import RegisterUserButton from '../buttons/registerButton';
+import LoginUserButton from '../buttons/loginButton';
+import LogoutUserButton from '../buttons/logoutButton';
 
 class Home extends React.Component {
 
@@ -25,8 +28,13 @@ class Home extends React.Component {
     //   )
     // } else {
         return (<div>No user
-        
+
           <NoUser/>
+          <RegisterUserButton/>
+          <LoginUserButton/>
+          <LogoutUserButton/>
+          <DistributionEvent /> 
+          <RescueEvent/>
            
         </div>)
  
