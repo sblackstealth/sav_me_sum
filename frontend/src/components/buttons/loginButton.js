@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import LogIn from '../auth/login';
 
 class LoginUserButton extends Component {
   render() {
     return (
-      <div className="loginUserButton">
-       <button className="loginButton">>login</button>
-      </div>
+      
+       <button className="loginButton" >login</button>
+      
     );
   }
 }

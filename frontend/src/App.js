@@ -37,7 +37,6 @@ class App extends Component {
       <div className="App">
         <p>Hello from App.js component!</p>
         <Login setUser={setUser} /> 
-        <Register />
         <Home  user={user}/>
       </div>
     );

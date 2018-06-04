@@ -28,12 +28,18 @@ class Home extends React.Component {
     //   )
     // } else {
         return (<div>No user
-
+          
+          <div className="landButton">
+            
+            <LoginUserButton />
+            <RegisterUserButton />
+        
+          </div>
           <NoUser/>
-          <RegisterUserButton/>
-          <LoginUserButton/>
+          {/* <RegisterUserButton/>
+          <LoginUserButton/> */}
+          <DistributionEvent />
           <LogoutUserButton/>
-          <DistributionEvent /> 
           <RescueEvent/>
            
         </div>)

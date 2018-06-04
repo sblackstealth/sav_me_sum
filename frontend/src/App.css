@@ -22,7 +22,21 @@
   font-size: large;
 }
 
+.landbutton{
+  position: fixed;
+
+}
+.Modal {
+  z-index: 4;
+}
+
+button:hover{
+
+  background-color: chartreuse;
+  
+}
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+

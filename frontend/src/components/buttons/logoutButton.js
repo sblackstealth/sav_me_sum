@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import LogOut from '../auth/logout';
 
 class LogoutUserButton extends Component {
   render() {
     return (
-      <div className="logoutUserButton">
-       <button className="logoutButton">>logout</button>
-      </div>
+     
+       <button className="logoutButton">logout</button>
+     
     );
   }
 }
