@@ -11,15 +11,6 @@ class LogIn extends Component {
       user_name: '',
       password: '',
       email:'',
-      user_type:'',
-      user_level:'',
-      is_veg:'',
-      good_standing:'',
-      user_events:null,
-      user_donations: '',
-      needs_training: false,
-      training_count:'',
-      isLoggedIn: false,
       message: '',
       modalIsOpen: false,
       loggedIn: false,
@@ -43,13 +34,13 @@ class LogIn extends Component {
     })
  }
 
-  openModal() {
-    this.setState({modalIsOpen: true});
-  }
+  // openModal() {
+  //   this.setState({modalIsOpen: true});
+  // }
 
-  closeModalLogin() {
-    this.setState({modalIsOpen: false, message: ''});
-  }
+  // closeModalLogin() {
+  //   this.setState({modalIsOpen: false, message: ''});
+  // }
 
   handleFormInput = e => {
     this.setState({
@@ -61,7 +52,7 @@ class LogIn extends Component {
     e.preventDefault();
     let setUser= this.props.setUser;
 
-    const { username, password, us } = this.state;
+    const { username, password, user } = this.state;
     axios
       .post("/users/login", {
         username: username,
@@ -94,7 +85,12 @@ class LogIn extends Component {
   }
 
   render() {
-    return(<div></div>)
+    return(<div>
+      <form className="loginForm" onSubmit={this.handleLoginFormSubmit}>
+      <input classname="loginInput" type="text" placeholder="Username" onChange={this.handleFormInput} name="username" value={this.state.user_name}></input> 
+      <input classname="loginInput" type="password" placeholder="Password" onChange={this.handleFormInput} name="password" value={this.state.user_name}></input> 
+      </form>
+    </div>)
   }
 }
 

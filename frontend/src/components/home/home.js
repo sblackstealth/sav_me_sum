@@ -7,6 +7,9 @@ import NoUser from './nouser';
 import RegisterUserButton from '../buttons/registerButton';
 import LoginUserButton from '../buttons/loginButton';
 import LogoutUserButton from '../buttons/logoutButton';
+import LogIn from '../auth/login';
+import LogOut from '../auth/logout';
+import RegisterUserMod from '../modals/registerUserMod';
 
 class Home extends React.Component {
 
