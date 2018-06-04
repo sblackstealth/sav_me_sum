@@ -36,14 +36,14 @@ router.get("/allevents/:date", db.getEventsByDate);
 
 
 /*---------------POST REQUEST----------------------*/  
- router.post("/register", db.registerUser);
- router.post("/login", db.loginUser);
- router.post("/addEvent", loginRequired, db.addEvent);
- router.post("/removeEvent", loginRequired,db.removeEvent);
- router.post("/addDonation", loginRequired, db.addDonation);
- router.post("/removeDonation", loginRequired, db.removeDonation);
- router.post("/addDonation/allergen",loginRequired, db.addDonationAllergen);
- router.post("/removeDonation/allergen",loginRequired, db.removeDonationAllergen);
+ router.post("/users/register", db.registerUser);
+ router.post("/users/login", db.loginUser);
+ router.post("/users/addEvent", loginRequired, db.addEvent);
+ router.post("/users/removeEvent", loginRequired,db.removeEvent);
+ router.post("/users/addDonation", loginRequired, db.addDonation);
+ router.post("/users/removeDonation", loginRequired, db.removeDonation);
+ router.post("/users/addDonation/allergen",loginRequired, db.addDonationAllergen);
+ router.post("/users/removeDonation/allergen",loginRequired, db.removeDonationAllergen);
 
  /*--------------PATCH REQUEST-----------------*/
  router.patch("/edit/:userId", loginRequired, db.editUser);
