@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
+import axios from "axios";
+import { Redirect } from "react-router-dom";
+
 
 class RegisterUser extends Component {
   constructor() {
@@ -22,52 +27,38 @@ class RegisterUser extends Component {
       loggedInForRegister: false,
      
     }
-  }
-    componentWillMount() {
-      axios
-       .get("/isloggedIn")
-       .then(res => {
-         this.setState({
-           loggedInForRegister: res.data
-         })
-       })
-       .catch( (err) => {
-         this.setState({
-           loggedInForRegister: err.response.status
-         })
-       })
-    }
+ 
   
-    handleFormInput = e => {
-      const {username, email,confirmpassword, password,userType,isVeg,message } = this.state
+    let handleFormInput = e => {
+      const {user_name, email,confirmpassword, password,user_type,is_veg,message } = this.state
       this.setState({
         [e.target.name]: e.target.value
       })
     }
   
-    handleRegisterFormSubmit = e => {
+   let handleRegisterFormSubmit = e => {
       e.preventDefault();
   
-      const { username, password, email, userType, userLevel, isVeg, goodStanding,userEvents, userDonations,needsTraining, trainingCount } = this.state;
+      const { user_name, password, email, user_type, user_level, is_veg, good_standing,user_events, user_donations,needs_training, training_count } = this.state;
       axios
         .post("/users/register", {
-            username: user_name,
+            user_name: user_name,
             password: password,
             email: email,
-            userType:user_type,
-            userLevel:user_level,
-            isVeg:is_veg,
-            goodStanding:good_standing,
-            userEvents:user_events,
-            userDonations:user_donations,
-            needsTraining:needs_training,
-            trainingCount:training_count,
+            user_type:user_type,
+            user_level:user_level,
+            is_veg:is_veg,
+            good_standing:good_standing,
+            user_events:user_events,
+            user_donations:user_donations,
+            needs_training:needs_training,
+            training_count:training_count,
             
         })
         .then(() => {
           axios
             .post('/users/login',{
-              username: username,
+              user_name: user_name,
               password: password
             })
             .catch(error => {
@@ -86,33 +77,36 @@ class RegisterUser extends Component {
           });
         });
     }
+  }
   
   render() {
-    const { confirmPassword, password, userame, email, isLoggedIn, userType, isVeg } = this.state
+    const { confirmpassword, password, user_name, email, isLoggedIn, user_type, is_veg } = this.state
 
     if(isLoggedIn) {
       return <Redirect to='/users/home/:userid' />
     }
     return (
-      <div className="registerUser">
-        <form onSubmit={this.handleLoginFormSubmit}>
-          <input className="input formInput" type="text" placeholder="username" onChange={this.handleFormInput} name='username' required></input> <br />
-          <input className="input formInput" type="text" placeholder="isVeg" onChange={this.handleFormInput} name='isveg' required>im at most vegetarian(true/false)</input> <br />
-          <input className="input formInput" type="email" placeholder="email" onChange={this.handleFormInput} name='email' required></input> <br />
-          <input className="input formInput" type="password" placeholder="password" onChange={this.handleFormInput} name='password' required></input> <br />
-          <input className="input formInput" type="password" placeholder="confirmPassword" onChange={this.handleFormInput} name='confirmpassword' required></input> <br />
-          <input className="input formInput" type="radio" name="userType" onChange={this.handleFormInput} placeholder='donor' required></input> <br />
-          <input className="input formInput" type="radio" name="userType" onChange={this.handleFormInput} placeholder='rescuer' required></input> <br />
-          <input className="input formInput" type="radio" name="userType" onChange={this.handleFormInput} placeholder='volunteer' required></input> <br />
-          <input className="input formInput" type="radio" name="userType" onChange={this.handleFormInput} placeholder='foodie' required></input> <br />
+      <React.Fragment className="registerUser">
+        <form onSubmit={this.handleRegisterFormSubmit} onChange={this.handleFormInput}>
+          <input className="inputFormInput" type="text" placeholder="username" name='username' required></input> <br />
+          <input className="inputFormInput" type="text" placeholder="is vegetarian(true/false)" name='isveg' required></input> <br />
+          <input className="inputFormInput" type="email" placeholder="email" name='email' required></input> <br />
+          <input className="inputFormInput" type="password" placeholder="password" name='password' required></input> <br />
+          <input className="inputFormInput" type="password" placeholder="confirmPassword" name='confirmpassword' required></input> <br />
+          <p>User Type</p><br/>
+          <p>donor</p><input className="inputFormInput" type="radio" name="userType" placeholder='donor' required></input> <br />
+          <p>rescuer</p><input className="inputFormInput" type="radio" name="userType" placeholder='rescuer' required></input> <br />
+          <p>volunteer</p><input className="inputFormInput" type="radio" name="userType" placeholder='volunteer' required></input> <br />
+          <p>foodie</p><input className="inputFormInput" type="radio" name="userType" placeholder='foodie' required></input> <br />
+          <input className="registerSubmitButton" type="submit"></input>
           
-          <button className="formButton">register</button>
-        </form>
+        
         <p> {this.state.message} </p>
         <p> {this.state.password !== this.state.confirmpassword && this.state.confirmpassword
               ? 'passwords do not match' : '' } </p>
         <p> {password && password.length < 8 ? 'password must be 8 characters' : ''} </p>
-      </div>
+        </form>
+      </React.Fragment>
     );
   }
 }

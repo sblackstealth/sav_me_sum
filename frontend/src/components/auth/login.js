@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import setUser from "../../App"
+import LoginUserButton from '../buttons/loginButton';
+
 
 
 class LogIn extends Component {
@@ -16,12 +18,12 @@ class LogIn extends Component {
       loggedIn: false,
       toggle: false,
     }
-    this.openModal = this.openModal.bind(this);
-    this.closeModalLogin = this.closeModalLogin.bind(this);
+    // this.openModal = this.openModal.bind(this);
+    // this.closeModalLogin = this.closeModalLogin.bind(this);
   }
  componentWillMount() {
    axios
-    .get('/users')
+    .get('/users/loginUser')
     .then(res => {
       this.setState({
         loggedIn: res.data
@@ -42,33 +44,39 @@ class LogIn extends Component {
   //   this.setState({modalIsOpen: false, message: ''});
   // }
 
-  handleFormInput = e => {
+  handleFormInput= e => {
     this.setState({
       [e.target.name]: e.target.value
     })
   }
 
   handleLoginFormSubmit = e => {
+    
     e.preventDefault();
     let setUser= this.props.setUser;
 
-    const { username, password, user } = this.state;
+    const { user_name, password, user, loggedIn, message } = this.state;
     axios
       .post("/users/login", {
-        username: username,
-        password: password
+        user_name: user_name,
+        password: password,
+        
       })
-      .then(res => {
-        let user = res.data
-        setUser(user);
+      .then(res => {this.setState({
+        message: "success",
+        loggedIn: true,
+        user: user
+       
+      });
+      console.log (user)
       })
       .catch(err => {
         this.setState({
-          username: "",
+          user_name: "",
           password: "",
           message: `${err.response.data}`
         });
-      });
+      })
   }
 
   handleClickLogOut = () => {
@@ -85,13 +93,15 @@ class LogIn extends Component {
   }
 
   render() {
-    return(<div>
+    return(
+    <React.Fragment>
       <form className="loginForm" onSubmit={this.handleLoginFormSubmit}>
-      <input classname="loginInput" type="text" placeholder="Username" onChange={this.handleFormInput} name="username" value={this.state.user_name}></input> 
-      <input classname="loginInput" type="password" placeholder="Password" onChange={this.handleFormInput} name="password" value={this.state.user_name}></input> 
+      <input className="loginInput" type="text" placeholder="username" onChange={this.handleFormInput} name="user_name" value={this.state.user_name}></input> 
+      <input className="loginInput" type="password" placeholder="password" onChange={this.handleFormInput} name="password" value={this.state.password}></input> 
+      <input type="submit" value="Submit"/>
       </form>
-    </div>)
+      
+    </React.Fragment>)
   }
 }
-
 export default LogIn;
