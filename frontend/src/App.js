@@ -15,7 +15,15 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state={
-      user:{}
+      user:{
+        isNull: true,
+        user_id:user_id,
+        user_name:user_name,
+        user_type: user_type,
+        user_level:user_level,
+        training_count:training_count
+
+      }
     }
   }
 
