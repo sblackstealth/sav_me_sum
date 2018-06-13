@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import setUser from "../../App"
+import LoginUserButton from '../buttons/loginButton';
+
 
 
 class LogIn extends Component {
@@ -11,47 +13,39 @@ class LogIn extends Component {
       user_name: '',
       password: '',
       email:'',
-      user_type:'',
-      user_level:'',
-      is_veg:'',
-      good_standing:'',
-      user_events:null,
-      user_donations: '',
-      needs_training: false,
-      training_count:'',
-      isLoggedIn: false,
       message: '',
       modalIsOpen: false,
       loggedIn: false,
       toggle: false,
     }
-    this.openModal = this.openModal.bind(this);
-    this.closeModalLogin = this.closeModalLogin.bind(this);
+    // this.openModal = this.openModal.bind(this);
+    // this.closeModalLogin = this.closeModalLogin.bind(this);
   }
  componentWillMount() {
-   axios
-    .get('/users')
-    .then(res => {
-      this.setState({
-        loggedIn: res.data
-      })
-    })
-    .catch( (err) => {
-      this.setState({
-        loggedIn: err.response.status
-      })
-    })
+   console.log("in login");
+//    axios
+//     .get('/users/login')
+//     .then(res => {
+//       this.setState({
+//         loggedIn: res.data
+//       })
+//     })
+//     .catch( (err) => {
+//       this.setState({
+//         loggedIn: err.response.status
+//       })
+//     })
  }
 
-  openModal() {
-    this.setState({modalIsOpen: true});
-  }
+  // openModal() {
+  //   this.setState({modalIsOpen: true});
+  // }
 
-  closeModalLogin() {
-    this.setState({modalIsOpen: false, message: ''});
-  }
+  // closeModalLogin() {
+  //   this.setState({modalIsOpen: false, message: ''});
+  // }
 
-  handleFormInput = e => {
+  handleFormInput= e => {
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -61,23 +55,31 @@ class LogIn extends Component {
     e.preventDefault();
     let setUser= this.props.setUser;
 
-    const { username, password, us } = this.state;
+    const { user_name, password, loggedIn, message } = this.state;
+    console.log(user_name, password)
     axios
       .post("/users/login", {
-        username: username,
-        password: password
+        user_name: user_name,
+        password: password,
       })
       .then(res => {
-        let user = res.data
-        setUser(user);
+        console.log(res.data)
+        this.setState({
+        message: "success",
+        loggedIn: true,
+        // user: user
+       
+      });
+      // console.log (this.state.user)
       })
       .catch(err => {
+        console.log(err);
         this.setState({
-          username: "",
+          user_name: "",
           password: "",
           message: `${err.response.data}`
         });
-      });
+      })
   }
 
   handleClickLogOut = () => {
@@ -94,8 +96,15 @@ class LogIn extends Component {
   }
 
   render() {
-    return(<div></div>)
+    return(
+    <React.Fragment>
+      <form className="loginForm" onSubmit={this.handleLoginFormSubmit}>
+      <input name="user_name" type="text" placeholder="username" onChange={this.handleFormInput} name="user_name" value={this.state.user_name}></input> 
+      <input name="password" type="password" placeholder="password" onChange={this.handleFormInput} name="password" value={this.state.password}></input> 
+      <input type="submit" value="Submit"/>
+      </form>
+      
+    </React.Fragment>)
   }
 }
-
 export default LogIn;

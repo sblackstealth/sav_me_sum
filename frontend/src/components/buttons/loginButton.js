@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import {handleClickLogOut} from '../auth/login';
 
-class LoginUserButton extends Component {
+class LogoutUserButton extends Component {
   render() {
     return (
-      <div className="loginUserButton">
-       <button className="loginButton">>login</button>
-      </div>
+      
+       <button className="logoutButton" onClick={this.handleClickLogOut}>login</button>
+      
     );
   }
 }
 
-export default LoginUserButton;
+export default LogoutUserButton;
