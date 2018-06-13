@@ -448,6 +448,7 @@ function registerUser(req, res, next) {
 }
 
 function loginUser(req, res, next) {
+    console.log(req.body);
     passport.authenticate("local", (err, user, info) => {
         if (err) {
             console.log(err);
@@ -806,12 +807,12 @@ function addDonorToEvent(req, res, next) {
 
 module.exports = {
     /*GET REQUEST*/
-    logoutuser,
+    // logoutUser,
     getSingleUser,
     getSingleUserLevel,
     getSingleUserEventList,
     getSingleUserSingleEvent,
-    getSingleUserEventType,
+    // getSingleUserEventType,
     getSingleUserIsVeg,
     getSingleUserGoodStanding,
     getSingleUserNeedsTraining,
@@ -819,13 +820,13 @@ module.exports = {
     getSingleUserDonations,
     getSingleDonationById,
     getAllDonations,
-    getSingleUserDonationById,
+    // getSingleUserDonationById,
     getSingleDonationAllergensById,
     getAllEvents,
     getSingleEventById,
     getAllattendingFoodiesByEventId,
     getAllStandbyFoodiesByEventId,
-    getAllAttendingHelpingHandsByEventId,
+    // getAllAttendingHelpingHandsByEventId,
     getAllStandbyHelpingHandsByEventId,
     getAllEventsInSingleBorough,
     getAllEventsInLocation,
@@ -849,7 +850,7 @@ module.exports = {
     removeUser,
     editEvent,
     removeEvent,
-    editDonation,
+    // editDonation,
     addAttendingFoodieToEvent,
     addStandbyFoodieToEvent,
     addAttendingHelpingHandToEvent,

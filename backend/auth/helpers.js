@@ -27,14 +27,29 @@ function loginRequired(req, res, next) {
     return next();
 }
 
-function comparePassword(username, password) {
-    console.log(username);
-    return bcrypt.compareSync(username, password);
+function comparePasswords(userPass, databasePass) {
+    return bcrypt.compareSync(userPass,databasePass)
+}
+
+function createHashPassword(password) {
+    const salt = bcrypt.genSaltSync()
+    const hash = bcrypt.hashSync(password, salt);
+    return hash;
+}
+
+function loginRequired(req, res, next) {
+    if(!req.user) {
+        res.status(401)
+        .json({status: 'Please log in.'})
+        return;
+    }
+    next()
 }
 
 
 module.exports = {
     createUser,
+    createHashPassword,
     loginRequired,
-    comparePassword
+    comparePasswords
 };

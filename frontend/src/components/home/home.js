@@ -8,7 +8,7 @@ import NoUser from './nouser';
 import app from'../../App';
 import LogIn from '../auth/login';
 import LogOut from '../auth/logout';
-import RegisterUserMod from '../modals/registerUserMod';
+import RegisterUser from '../auth/registeruser';
 import AboutUs from '../aboutUs';
 import RescuerAffidavit from '../affidavits/rescuerAffidavit';
 import FoodieVolunteerAffidavit from '../affidavits/foodieVolunteerAffidavit';
@@ -17,10 +17,12 @@ import FoodieVolunteerAffidavit from '../affidavits/foodieVolunteerAffidavit';
 class Home extends React.Component {
   constructor(props){
     super(props)
+  
     this.state={
-      user: props.user
+      
     }
   }
+  
   
   handleClickLogOut = () => {
     axios
@@ -37,35 +39,21 @@ class Home extends React.Component {
 
 
   render() {
-    let user = this.state.user;
+    let user = this.props.user;
     console.log(user)
-  if(user=== null){
+    debugger
     return (
       <div>
+        HELLO FROM HOME
         <button><Link to='/users/register'>register</Link></button><br/>
         <button><Link to='/users/login'>login</Link></button><br/>
+  
         <AboutUs/>
         <RescuerAffidavit/>
         <FoodieVolunteerAffidavit/>
-        <DistributionEvent /> 
-        <RescueEvent/>   
-        </div>)
-  }else if (user.user_type=== "donor"||user.user_type==="rescuer") {
-      return (
-        <div className="DistributionEventCalendar">
-          <button onClick={this.handleClickLogOut}>logout</button><br/>    
-          <RescueEvent/>     
-        </div>
-      );
-    } else if(user.user_type=== "volunteer"||user.user_type==="foodie"){
-      return (
-        <div className="RescueEventCalendar">
-        <button onClick={this.handleClickLogOut}>logout</button><br/>
-        <DistributionEvent />
         
-        </div>
-      )
-    } 
+        </div>)
+  
   }
 }
 

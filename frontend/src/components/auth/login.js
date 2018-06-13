@@ -22,18 +22,19 @@ class LogIn extends Component {
     // this.closeModalLogin = this.closeModalLogin.bind(this);
   }
  componentWillMount() {
-   axios
-    .get('/users/loginUser')
-    .then(res => {
-      this.setState({
-        loggedIn: res.data
-      })
-    })
-    .catch( (err) => {
-      this.setState({
-        loggedIn: err.response.status
-      })
-    })
+   console.log("in login");
+//    axios
+//     .get('/users/login')
+//     .then(res => {
+//       this.setState({
+//         loggedIn: res.data
+//       })
+//     })
+//     .catch( (err) => {
+//       this.setState({
+//         loggedIn: err.response.status
+//       })
+//     })
  }
 
   // openModal() {
@@ -51,26 +52,28 @@ class LogIn extends Component {
   }
 
   handleLoginFormSubmit = e => {
-    
     e.preventDefault();
     let setUser= this.props.setUser;
 
-    const { user_name, password, user, loggedIn, message } = this.state;
+    const { user_name, password, loggedIn, message } = this.state;
+    console.log(user_name, password)
     axios
       .post("/users/login", {
         user_name: user_name,
         password: password,
-        
       })
-      .then(res => {this.setState({
+      .then(res => {
+        console.log(res.data)
+        this.setState({
         message: "success",
         loggedIn: true,
-        user: user
+        // user: user
        
       });
-      console.log (user)
+      // console.log (this.state.user)
       })
       .catch(err => {
+        console.log(err);
         this.setState({
           user_name: "",
           password: "",
@@ -96,8 +99,8 @@ class LogIn extends Component {
     return(
     <React.Fragment>
       <form className="loginForm" onSubmit={this.handleLoginFormSubmit}>
-      <input className="loginInput" type="text" placeholder="username" onChange={this.handleFormInput} name="user_name" value={this.state.user_name}></input> 
-      <input className="loginInput" type="password" placeholder="password" onChange={this.handleFormInput} name="password" value={this.state.password}></input> 
+      <input name="user_name" type="text" placeholder="username" onChange={this.handleFormInput} name="user_name" value={this.state.user_name}></input> 
+      <input name="password" type="password" placeholder="password" onChange={this.handleFormInput} name="password" value={this.state.password}></input> 
       <input type="submit" value="Submit"/>
       </form>
       
