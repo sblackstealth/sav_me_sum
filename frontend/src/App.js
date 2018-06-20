@@ -54,6 +54,7 @@ class App extends Component {
   render() {
     let { user } = this.state;
     let setUser = this.setUser;
+    console.log(user)
 
     return (
   <div className="App">
