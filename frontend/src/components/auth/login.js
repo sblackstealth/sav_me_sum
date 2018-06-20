@@ -58,8 +58,8 @@ class LogIn extends Component {
     const { user_name, password, loggedIn, message } = this.state;
     console.log(user_name, password)
     axios
-      .post("/users/login", {
-        user_name: user_name,
+      .post("http://localhost:3001/users/login", {
+        username: user_name,
         password: password,
       })
       .then(res => {
@@ -80,6 +80,7 @@ class LogIn extends Component {
           message: `${err.response.data}`
         });
       })
+      console.log(this.state)
   }
 
   handleClickLogOut = () => {

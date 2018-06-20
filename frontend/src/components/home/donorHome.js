@@ -4,7 +4,7 @@ import axios from "axios";
 import LogOut from '../auth/logout';
 import app from'../../App';
 import SetUser from '../../App';
-import LogoutUserButton from '../buttons/loginButton';
+
 
 
 class DonorHome extends Component {
@@ -24,8 +24,8 @@ class DonorHome extends Component {
   render() {
    return 
       <div className= "donorHome">
-        <LogoutUserButton/>
-       <RescueEvent/>   
+        <LogOut/>
+       <RescueEvent/> 
       </div>
   }
 }

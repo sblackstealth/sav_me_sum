@@ -5,7 +5,7 @@ class LogoutUserButton extends Component {
   render() {
     return (
      
-       <button className="logoutButton">logout</button>
+       <button className="logoutButton" onClick>logout</button>
      
     );
   }

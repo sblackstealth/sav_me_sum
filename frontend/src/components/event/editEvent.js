@@ -10,4 +10,4 @@ class EditEvent extends Component {
   }
 }
 
-export default editEvent;
+export default EditEvent;
