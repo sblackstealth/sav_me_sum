@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from "axios";
 import setUser from "../../App"
 import LoginUserButton from '../buttons/loginButton';
+import {Redirect} from 'react-router-dom';
 
 
 
@@ -80,7 +81,9 @@ class LogIn extends Component {
           message: `${err.response.data}`
         });
       })
-      console.log(this.state)
+      
+      return <Redirect to='/'></Redirect>
+
   }
 
   handleClickLogOut = () => {

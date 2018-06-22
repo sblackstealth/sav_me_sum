@@ -4,6 +4,10 @@ const passport = require("../auth/local");
 
 
 /* ------------------------------GET REQUEST--------------------------*/
+function logoutUser(req, res, next) {
+    req.logout();
+    res.status(200).send("log out success");
+  }
 function getSingleUser(req, res, next) {
     db
         .one(
@@ -154,7 +158,7 @@ function getSingleUserDonations(req, res, next) {
         })
 }
 
-function getSingleUserDonation(req, res, next) {
+function getSingleUserDonationById(req, res, next) {
     db
         .one(
             `SELECT *
@@ -272,7 +276,7 @@ function getAllStandbyFoodiesByEventId(req, res, next) {
         })
 }
 
-function getAllAttendingHelpingHAndsByEventId(req, res, next) {
+function getAllAttendingHelpingHandsByEventId(req, res, next) {
     db
         .any(
             `SELECT attending_volunteers
@@ -807,12 +811,12 @@ function addDonorToEvent(req, res, next) {
 
 module.exports = {
     /*GET REQUEST*/
-    // logoutUser,
+    logoutUser,
     getSingleUser,
     getSingleUserLevel,
     getSingleUserEventList,
     getSingleUserSingleEvent,
-    // getSingleUserEventType,
+    getSingleUserType,
     getSingleUserIsVeg,
     getSingleUserGoodStanding,
     getSingleUserNeedsTraining,
@@ -820,13 +824,13 @@ module.exports = {
     getSingleUserDonations,
     getSingleDonationById,
     getAllDonations,
-    // getSingleUserDonationById,
+    getSingleUserDonationById,
     getSingleDonationAllergensById,
     getAllEvents,
     getSingleEventById,
     getAllattendingFoodiesByEventId,
     getAllStandbyFoodiesByEventId,
-    // getAllAttendingHelpingHandsByEventId,
+    getAllAttendingHelpingHandsByEventId,
     getAllStandbyHelpingHandsByEventId,
     getAllEventsInSingleBorough,
     getAllEventsInLocation,
@@ -850,7 +854,7 @@ module.exports = {
     removeUser,
     editEvent,
     removeEvent,
-    // editDonation,
+    editDonations,
     addAttendingFoodieToEvent,
     addStandbyFoodieToEvent,
     addAttendingHelpingHandToEvent,

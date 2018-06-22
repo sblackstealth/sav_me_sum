@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import quickstart from '../../../src/quickstart'
 
 class AddEvent extends Component {
     constructor(){
@@ -16,34 +18,43 @@ class AddEvent extends Component {
             numberOfPortions: null
 
         }
+    }
         handleInputChange = e =>  {
             const{eventDate,eventTime,eventBorough,eventLoc,eventZip,eventName,email,isVeg,donations,numberOfPortions}= this.state
             this.setState({
                 [e.target.name]: e.target.value
             })
         }
-        handleLoginFormSubmit = e => {
+        handleAddEventFormSubmit = e => {
             e.preventDefault();
             const{eventDate,eventTime,eventBorough,eventLoc,eventZip,eventName,email,isVeg,donations,numberOfPortions}= this.state
             this.state;
-            axios
-              .post("/addEvent", {
-                  username: username,
-                  password: password,
-                  email: email,
-                  first_name: firstname,
-                  last_name: lastname
-              })
-              .then(() => {
+            // google
+            //   .post("/addEvent", {
+                  
+                
+            //   })
+            //   .then(() => {)}
                 axios
-                  .post('/users/login',{
-                    username: username,
-                    password: password
+                  .post('/users/addEvent',{
+                    eventDate:eventDate,
+                    eventTime:eventTime,
+                    eventBorough:eventBorough,
+                    eventLoc:eventLoc,
+                    eventZip:eventZip,
+                    eventName:eventName,
+                    email:email,
+                    isVeg:isVeg,
+                    donations:donations,
+                    numberOfPortions: numberOfPortions
+        
+                   
+                
                   })
                   .catch(error => {
                     console.log('login fail after register')
                   })
-              })
+              
               .then(res => {
                 this.setState({
                   message: 'success',
@@ -55,12 +66,13 @@ class AddEvent extends Component {
                   message: `Error registering. ${err.response.data.detail}`,
                 });
               });
-          }
+           }
         
-  render() {
+        
+  render(){
     return (
       <div className="addEvent">
-       <form className='addEventForm'onChange={this.handleInputChange}>
+       <form className='addEventForm'onChange={this.handleInputChange} onsubmit={this.handleAddEventFormSubmit}>
        
     <input type='text' className='dateInput' placeholder='event Date'value='eventDate'> </input>
     <input type='text' className='timeInput' placeholder='event Time'value='eventTime'> </input>
@@ -77,7 +89,7 @@ class AddEvent extends Component {
       </div>
     );
   }
-}
+
 }
 
 export default AddEvent;

@@ -7,7 +7,7 @@ function createUser (req) {
     return db.none(
         "INSERT INTO users (user_id, user_name, password, email, user_type, user_level, is_veg, good_standing, user_events, needs_training) VALUES(DEFAULT, ${username}, ${password}, ${email}, ${usertype}, ${userlevel}, ${isveg}, ${goodstanding}, ${userevents}, ${needstraining})",
         {
-            username: req.body.username,
+            user_name: req.body.username,
             password: hash,
             email: req.body.email,
             usertype: req.body.usertype,

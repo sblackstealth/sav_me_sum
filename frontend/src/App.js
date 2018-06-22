@@ -12,6 +12,8 @@ import RescuerAffidavit from './components/affidavits/rescuerAffidavit';
 import FoodieVolunteerAffidavit from './components/affidavits/foodieVolunteerAffidavit';
 import DonorHome from './components/home/donorHome';
 import FoodieHome from './components/home/foodieHome'
+import AddEvent from './components/event/addevent';
+//import EditEvent from './components/event/editEvent';
 
 
 
@@ -82,6 +84,8 @@ class App extends Component {
       <Route exact path='/users/loginUser' component={DistributionEvent} />
       <Route exact path='/home/affidavits/rescuerAffidavit/' component={RescuerAffidavit}/>
       <Route exact path='/home/affidavits/foodieVolunteerAffidavit/' component={FoodieVolunteerAffidavit}/>
+      <Route exact path='/users/addevent/' component={AddEvent}/>
+      {/* <Route exact path='/users/editEvent' component={EditEvent}/> */}
       </Switch>
       </div>
        <div className= "right-image-sidebar">

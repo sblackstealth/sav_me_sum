@@ -1,5 +1,4 @@
-const fs = require('fs');
-const readline = require('readline');
+
 const {google} = require('googleapis');
 
 // If modifying these scopes, delete credentials.json.
@@ -11,7 +10,7 @@ try {
   const content = fs.readFileSync('client_secret.json');
   authorize(JSON.parse(content), listEvents);
 } catch (err) {
-  return console.log('Error loading client secret file:', err);
+   console.log('Error loading client secret file:', err);
 }
 
 /**
