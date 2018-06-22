@@ -49,8 +49,8 @@ class Home extends React.Component {
         <button><Link to='/users/login'>login</Link></button><br/>
   
         <AboutUs/>
-        <RescuerAffidavit/>
-        <FoodieVolunteerAffidavit/>
+        <Link to= 'home/affidavits/rescuerAffidavit'> Rescuer Affidavit</Link>
+         <Link to='home/affidavits/foodieVolunteerAffidavit'>Foodie & Volunteer Affidavit </Link> 
         
         </div>)
   
