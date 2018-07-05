@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import quickstart from '../../../src/quickstart'
+
 
 class AddEvent extends Component {
     constructor(){
