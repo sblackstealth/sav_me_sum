@@ -55,11 +55,11 @@ router.get("/allevents/:date", db.getEventsByDate);
  router.patch("/remove/:eventId", loginRequired, db.removeEvent);
  router.patch("/edit/:donationId",loginRequired, db.editDonations);
  router.patch("/remove/:donationId", loginRequired, db.removeDonation);
-//  router.patch("/edit/;eventId/:attendingFoodies", loginRequired, db.addAttendingFoodietoEvent);
-// router.patch("/edit/:eventId/:standbyFoodies", loginRequired, db.addStandbyFoodietoEvent);
- router.patch("/edit/:eventId/:attendingHelpingHands", loginRequired, db.addAttendingHelpingHandToEvent);
- router.patch("/edit/:eventId/:standbyHelpingHands", loginRequired, db.addStandbyHelpingHandToEvent)
-//  router.patch("/edit/:eventId/:rescuers", loginRequired, db.addRescuerToEvents);
+//  router.patch("/edit/;eventId/attendingFoodies", loginRequired, db.addAttendingFoodietoEvent);
+// router.patch("/edit/:eventId/standbyFoodies", loginRequired, db.addStandbyFoodietoEvent);
+ router.patch("/edit/:eventId/attendingHelpingHands", loginRequired, db.addAttendingHelpingHandToEvent);
+ router.patch("/edit/:eventId/standbyHelpingHands", loginRequired, db.addStandbyHelpingHandToEvent)
+//  router.patch("/edit/:eventId/rescuers", loginRequired, db.addRescuerToEvents);
  router.patch("/edit/eventId/:donations", loginRequired, db.addDonationToEvent);
  router.patch("/edit/:eventId/:donors", loginRequired, db.addDonorToEvent);
 

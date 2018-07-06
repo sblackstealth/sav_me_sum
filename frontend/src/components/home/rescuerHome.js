@@ -10,4 +10,4 @@ class RescuerHome extends Component {
   }
 }
 
-export default rescuerHome;
+export default RescuerHome;

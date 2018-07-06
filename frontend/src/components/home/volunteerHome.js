@@ -10,4 +10,4 @@ class VolunteerHome extends Component {
   }
 }
 
-export default volunteerHome;
+export default VolunteerHome;
