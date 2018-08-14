@@ -41,7 +41,8 @@ router.get("/allevents/:date", db.getEventsByDate);
  router.post("/login", passport.authenticate('local'),(req,res)=>{
      res.json(req.user)
  });
- router.post("/users/addEvent", loginRequired, db.addEvent);
+ router.post("/users/addDistributionEvent", loginRequired, db.addEvent);
+ router.post("/users/addRescueEvent", loginRequired, db.addEvent);
  router.post("/users/removeEvent", loginRequired,db.removeEvent);
  router.post("/users/addDonation", loginRequired, db.addDonation);
  router.post("/users/removeDonation", loginRequired, db.removeDonation);

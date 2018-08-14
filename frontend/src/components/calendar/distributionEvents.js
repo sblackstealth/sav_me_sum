@@ -28,8 +28,8 @@ console.log(d, eventList)
         events={eventList}
         startAccessor='startDate'
         endAccessor='endDate'
-        views={['week','day','agenda']}
-        defaultView='day'
+        views={['month','week','day','agenda']}
+        defaultView='month'
         />
         </div>
       );
