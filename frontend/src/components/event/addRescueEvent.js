@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 
-class AddEvent extends Component {
+class AddREvent extends Component {
     constructor(){
         super()
         this.state={
@@ -92,4 +92,4 @@ class AddEvent extends Component {
 
 }
 
-export default AddEvent;
+export default AddREvent;

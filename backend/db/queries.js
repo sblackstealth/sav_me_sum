@@ -471,10 +471,37 @@ function loginUser(req, res, next) {
     })(req, res, next);
 }
 
-function addEvent(req, res, next) {
+function addDistributionEvent(req, res, next) {
     return db
         .none(
-            "INSERT INTO events (event_Id, event_date, event_borough, event_time, event_location, event_zipcode, event_name, email, event_type, donors,rescuers,is_veg,attending_foodies, standby_foodies, donations, event_closed, number_of_foodies, number_of_helping_hands, number_ofportions, portions_rescued, attending_helping_hands, standby_helping_hands) Values(${event_Id},${event_date}, ${event_time}, ${event_borough}, ${event_location}, ${event_zipcode}, ${event_name}, ${email}, ${event_type}, ${donors},${rescuers},${is_veg},${attending_foodies}, ${standby_foodies}, ${donations}, ${event_closed}, ${number_ofportions}, ${portions_rescued}, ${attending_helping_hands}, ${standby_helping_hands)", {
+            "INSERT INTO events_d (event_Id, event_date, event_borough, event_time, event_location, event_zipcode, event_name, email, event_type, donors,rescuers,is_veg,attending_foodies, standby_foodies, donations, event_closed, number_of_foodies, number_of_helping_hands, number_ofportions, portions_rescued, attending_helping_hands, standby_helping_hands) Values(${event_Id},${event_date}, ${event_time}, ${event_borough}, ${event_location}, ${event_zipcode}, ${event_name}, ${email}, ${event_type}, ${donors},${rescuers},${is_veg},${attending_foodies}, ${standby_foodies}, ${donations}, ${event_closed}, ${number_ofportions}, ${portions_rescued}, ${attending_helping_hands}, ${standby_helping_hands)", {
+                event_id: req.params.eventId,
+                event_time: req.params.eventTime,
+                event_borough: req.params.eventBorough,
+                event_location: req.params.eventLocation,
+                event_zipcode: req.params.eventZipcode,
+                event_name: req.params.eventName,
+                email: req.params.email,
+                event_type: req.params.eventType,
+                rescuers: req.params.rescuers,
+                is_veg: req.params.isVeg,
+                attending_foodies: req.params.attendingFoodies,
+                standby_foodies: req.params.standbyFoodies,
+                donations: req.params.donations,
+                event_closed: req.params.eventClosed,
+                number_of_foodies: req.params.numberOfFoodies,
+                number_of_helping_hands: req.params.numberOfHelpingHands,
+                number_ofportions: req.params.numberOfPortions,
+                attending_helping_hands: req.params.attendingHelpingHands,
+                standby_helping_hands: req.params.standbyHelpingHands,
+            }
+        )
+}
+
+function addRescueEvent(req, res, next) {
+    return db
+        .none(
+            "INSERT INTO events_r (event_Id, event_date, event_borough, event_time, event_location, event_zipcode, event_name, email, event_type, donors,rescuers,is_veg,attending_foodies, standby_foodies, donations, event_closed, number_of_foodies, number_of_helping_hands, number_ofportions, portions_rescued, attending_helping_hands, standby_helping_hands) Values(${event_Id},${event_date}, ${event_time}, ${event_borough}, ${event_location}, ${event_zipcode}, ${event_name}, ${email}, ${event_type}, ${donors},${rescuers},${is_veg},${attending_foodies}, ${standby_foodies}, ${donations}, ${event_closed}, ${number_ofportions}, ${portions_rescued}, ${attending_helping_hands}, ${standby_helping_hands)", {
                 event_id: req.params.eventId,
                 event_time: req.params.eventTime,
                 event_borough: req.params.eventBorough,
@@ -843,7 +870,8 @@ module.exports = {
     /*POST REQUEST*/
     registerUser,
     loginUser,
-    addEvent,
+    addDistributionEvent,
+    addRescueEvent,
     removeEvent,
     addDonation,
     removeDonation,

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 
-class AddEvent extends Component {
+class AddDEvent extends Component {
     constructor(){
         super()
         this.state={
@@ -36,7 +36,7 @@ class AddEvent extends Component {
             //   })
             //   .then(() => {)}
                 axios
-                  .post('/users/addEvent',{
+                  .post('/users/addDistributionEvent',{
                     eventDate:eventDate,
                     eventTime:eventTime,
                     eventBorough:eventBorough,
@@ -71,7 +71,7 @@ class AddEvent extends Component {
         
   render(){
     return (
-      <div className="addEvent">
+      <div className="addDEvent">
        <form className='addEventForm'onChange={this.handleInputChange} onsubmit={this.handleAddEventFormSubmit}>
        
     <input type='text' className='dateInput' placeholder='event Date'value='eventDate'> </input>
@@ -92,4 +92,4 @@ class AddEvent extends Component {
 
 }
 
-export default AddEvent;
+export default AddDEvent;

@@ -17,7 +17,31 @@ CREATE TABLE users (
     needs_training BOOLEAN,
     training_count VARCHAR);
 
-CREATE TABLE events (
+CREATE TABLE events_d (
+    event_id SERIAL PRIMARY KEY,
+    event_date VARCHAR,
+    event_time timestamp not null default CURRENT_TIMESTAMP, 
+    event_borough VARCHAR,
+    event_location VARCHAR,
+    event_zipcode VARCHAR,
+    event_name VARCHAR,
+    email VARCHAR,
+    event_type VARCHAR,
+    donors VARCHAR[],
+    rescuers VARCHAR[],
+    is_veg BOOLEAN DEFAULT false,
+    attending_foodies VARCHAR[],
+    standby_foodies VARCHAR[],
+    donations VARCHAR[],
+    event_closed BOOLEAN,
+    number_of_foodies VARCHAR,
+    number_of_helping_hands VARCHAR,
+    number_of_portions VARCHAR,
+    portions_rescued VARCHAR,
+    attending_helping_hands VARCHAR[],
+    standby_helping_hands VARCHAR[]);
+
+    CREATE TABLE events_r (
     event_id SERIAL PRIMARY KEY,
     event_date VARCHAR,
     event_time timestamp not null default CURRENT_TIMESTAMP, 
@@ -59,6 +83,9 @@ CREATE TABLE donations(
     pass_check BOOLEAN,
     events_servedat VARCHAR[]);
 
+
+
+
 INSERT INTO users(user_name, password, email, user_type, user_level, is_veg, good_standing, user_events, user_donations, needs_training, training_count)
 VALUES ('Starbucks', '$2a$10$.MVvgjXGDNY5BspJcHdfqOMr5oEu3AxYiIxjOu8aUiA0LBXlXIWEq', 'starbucks1@gmail.com', 'donor', 1, false, true, null, null,false , 0),
  ('Food kitchen1', '$2a$10$.MVvgjXGDNY5BspJcHdfqOMr5oEu3AxYiIxjOu8aUiA0LBXlXIWEq', 'Foodkitchen1@gmail.com', 'rescuer', 3, false, true, null, null,false , 3),
@@ -71,7 +98,21 @@ VALUES ('Starbucks', '$2a$10$.MVvgjXGDNY5BspJcHdfqOMr5oEu3AxYiIxjOu8aUiA0LBXlXIW
  ('Chicpea', '$2a$10$.MVvgjXGDNY5BspJcHdfqOMr5oEu3AxYiIxjOu8aUiA0LBXlXIWEq', 'Chicpea1@gmail.com', 'donor', 2, true, true, null, null,false , 0),
  ('Marlon', '$2a$10$.MVvgjXGDNY5BspJcHdfqOMr5oEu3AxYiIxjOu8aUiA0LBXlXIWEq', 'Marlon1@gmail.com', 'foodie', 4, false, true, null, null,false , 1);
 
-INSERT INTO events(event_borough,event_location, event_zipcode, event_name, email, event_type, donors,rescuers,is_veg,attending_foodies, standby_foodies, donations, event_closed, number_of_foodies, number_of_helping_hands, number_of_portions, portions_rescued, attending_helping_hands, standby_helping_hands)
+INSERT INTO events_d(event_borough,event_location, event_zipcode, event_name, email, event_type, donors,rescuers,is_veg,attending_foodies, standby_foodies, donations, event_closed, number_of_foodies, number_of_helping_hands, number_of_portions, portions_rescued, attending_helping_hands, standby_helping_hands)
+VALUES ('bronx','1460 grand concourse', '10451', 'thursday dinner at the food kitchen bronx', 'Foodkitchen1@gmail.com', 'distribution', ARRAY['Starbucks', 'Chicpea'],ARRAY['Food kitchen1'],true, ARRAY['Donny'], ARRAY['Andre'],ARRAY['bagels','parfait','hummus', 'falafel'], false, 1, 2, 6, 3, ARRAY['Elon'], ARRAY['Eric']),
+ ('bronx','1 getting money plaza', '10451','thursday evening rescue bronx','starbucks1@gmail.com','rescue', ARRAY['starbucks'],ARRAY['Food kitchen1'],False, null,null,ARRAY['bagels','parfait','chocolate milk'], true, 1, 2, 6, 6, null,null ),
+ ('bronx','3 getting money plaza', '10451','thursday close rescue chipotle bronx','chipotle1@gmail.com','rescue' ,  ARRAY['chipotle'],ARRAY['Church'],False, null, null, ARRAY['shredded beef','steak', 'pork','chicken','white rice', 'brown rice', 'tortilia wrap', 'sour cream', 'guacamole', 'cheese', 'lettuce'], true, 1, 2, 6, 6, null,null),
+ ('bronx','5 getting money plaza', '10451','safe supper bronx','church1@gmail.com','distribution', ARRAY['chipotle'],ARRAY['Church'],False, ARRAY['Marlon'],ARRAY['Andre'],ARRAY['shredded beef','steak', 'pork','chicken','white rice', 'brown rice', 'tortilia wrap', 'sour cream', 'guacamole', 'cheese', 'lettuce'], true, 1, 2, 6, 6, ARRAY['Elon'], ARRAY['Eric']),
+ ('manhattan','1460 grand concourse', '10451','thursday dinner at the food kitchen', 'Foodkitchen1@gmail.com', 'distribution', ARRAY['Starbucks', 'Chicpea'],ARRAY['Food kitchen1'],true, ARRAY['Donny'], ARRAY['Andre'],ARRAY['bagels','parfait','hummus', 'falafel'], false, 1, 2, 6, 3, ARRAY['Elon'], ARRAY['Eric']),
+ ('manhattan','1 getting money plaza', '10451','thursday evening rescue','starbucks1@gmail.com','rescue', ARRAY['starbucks'],ARRAY['Food kitchen1'],False, null,null,ARRAY['bagels','parfait','chocolate milk'], true, 1, 2, 6, 6, null,null ),
+ ('manhattan','3 getting money plaza', '10451','thursday close rescue','chipotle1@gmail.com','rescue' ,  ARRAY['chipotle'],ARRAY['Church'],False, null, null, ARRAY['shredded beef','steak', 'pork','chicken','white rice', 'brown rice', 'tortilia wrap', 'sour cream', 'guacamole', 'cheese', 'lettuce'], true, 1, 2, 6, 6, null,null),
+ ('manhattan','5 getting money plaza', '10451','safe supper','church1@gmail.com','distribution', ARRAY['chipotle'],ARRAY['Church'],False, ARRAY['Marlon'],ARRAY['Andre'],ARRAY['shredded beef','steak', 'pork','chicken','white rice', 'brown rice', 'tortilia wrap', 'sour cream', 'guacamole', 'cheese', 'lettuce'], true, 1, 2, 6, 6, ARRAY['Elon'], ARRAY['Eric']),
+ ('staten island','1460 grand concourse', '10451', 'thursday dinner at the food kitchen', 'Foodkitchen1@gmail.com', 'distribution', ARRAY['Starbucks', 'Chicpea'],ARRAY['Food kitchen1'],true, ARRAY['Donny'], ARRAY['Andre'],ARRAY['bagels','parfait','hummus', 'falafel'], false,1, 2, 6, 3, ARRAY['Elon'], ARRAY['Eric']),
+ ('staten island','1 getting money plaza', '10451','thursday evening rescue','starbucks1@gmail.com','rescue', ARRAY['starbucks'],ARRAY['Food kitchen1'],False, null,null,ARRAY['bagels','parfait','chocolate milk'], true, 1, 2, 6, 6, null,null ),
+ ('staten island','3 getting money plaza', '10451','thursday close rescue','chipotle1@gmail.com','rescue' ,  ARRAY['chipotle'],ARRAY['Church'],False, null, null, ARRAY['shredded beef','steak', 'pork','chicken','white rice', 'brown rice', 'tortilia wrap', 'sour cream', 'guacamole', 'cheese', 'lettuce'], true, 1, 2, 6, 6, null,null),
+ ('staten island','5 getting money plaza', '10451','safe supper','church1@gmail.com','distribution', ARRAY['chipotle'],ARRAY['Church'],False, ARRAY['Marlon'],ARRAY['Andre'],ARRAY['shredded beef','steak', 'pork','chicken','white rice', 'brown rice', 'tortilia wrap', 'sour cream', 'guacamole', 'cheese', 'lettuce'], true, 1, 2, 6, 6, ARRAY['Elon'], ARRAY['Eric']);
+ 
+INSERT INTO events_r(event_borough,event_location, event_zipcode, event_name, email, event_type, donors,rescuers,is_veg,attending_foodies, standby_foodies, donations, event_closed, number_of_foodies, number_of_helping_hands, number_of_portions, portions_rescued, attending_helping_hands, standby_helping_hands)
 VALUES ('bronx','1460 grand concourse', '10451', 'thursday dinner at the food kitchen bronx', 'Foodkitchen1@gmail.com', 'distribution', ARRAY['Starbucks', 'Chicpea'],ARRAY['Food kitchen1'],true, ARRAY['Donny'], ARRAY['Andre'],ARRAY['bagels','parfait','hummus', 'falafel'], false, 1, 2, 6, 3, ARRAY['Elon'], ARRAY['Eric']),
  ('bronx','1 getting money plaza', '10451','thursday evening rescue bronx','starbucks1@gmail.com','rescue', ARRAY['starbucks'],ARRAY['Food kitchen1'],False, null,null,ARRAY['bagels','parfait','chocolate milk'], true, 1, 2, 6, 6, null,null ),
  ('bronx','3 getting money plaza', '10451','thursday close rescue chipotle bronx','chipotle1@gmail.com','rescue' ,  ARRAY['chipotle'],ARRAY['Church'],False, null, null, ARRAY['shredded beef','steak', 'pork','chicken','white rice', 'brown rice', 'tortilia wrap', 'sour cream', 'guacamole', 'cheese', 'lettuce'], true, 1, 2, 6, 6, null,null),
