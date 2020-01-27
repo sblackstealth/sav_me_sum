@@ -17,8 +17,8 @@ class Calendar extends Component {
     // expects year month daye hours minutes
     let eventList = [{/*this.state.events.map*/
       title: "Food Rescue Event", 
-      startDate: new Date(d.getFullYear(),d.getMonth(), d.getDate(), d.getHours(), d.getMinutes()), 
-      endDate: new Date(d.getFullYear(),d.getMonth(), d.getDate(), d.getHours(), d.getMinutes()+60) 
+      startDate: new Date(d.getFullYear(),d.getMonth(), d.getDate()+1, d.getHours(), d.getMinutes()+200), 
+      endDate: new Date(d.getFullYear(),d.getMonth(), d.getDate()+1, d.getHours(), d.getMinutes()+245) 
     }]
 
 console.log(d, eventList)
