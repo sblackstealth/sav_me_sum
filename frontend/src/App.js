@@ -61,19 +61,13 @@ class App extends Component {
     return (
   <div className="App">
     <div className= "left-image-sidebar">
-        <img className="single-image" src="https://i.imgur.com/E2B5uqn.jpg" />
+       <img className="single-image" src="https://i.imgur.com/E2B5uqn.jpg" />
         <img className="single-image" src="https://i.imgur.com/xyMqAU8.jpg" />
         <img className="single-image" src="https://i.imgur.com/KnEhw9j.jpg" />
         <img className="single-image" src="https://i.imgur.com/cOHnGCK.jpg" />
        </div>
        <div className="center-content">
-       <div >Hello from app.js</div>
-       
-       
-        {/* <AboutUs/> */}
-        {/* <Link to='/home/affidavits/rescuerAffidavit/'> RESCUER AFFIDAVIT</Link><br/>
-        <Link to='/home/affidavits/foodieVolunteerAffidavit'> FOODIE & VOLUNTEER AFFIDAVIT </Link>
-         */}
+       <div >Welcome to the Sav Me Sum App</div>
        
        <Switch>
       <Route exact path='/users/login' component={LogIn} />

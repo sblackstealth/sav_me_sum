@@ -23,7 +23,7 @@ class Home extends React.Component {
     console.log(user)
     return (
       <div>
-        HELLO FROM HOME <br/>
+        <Link to= './home'>Home</Link> <br/>
         <button><Link to='/users/register'>register</Link></button><br/>
         <button><Link to='/users/login'>login</Link></button><br/>
   
