@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-Footprint-App
+SAV ME SUM-App
 
 Install & Quick Start
 Navigatate to frontend folder in cloned repository.
