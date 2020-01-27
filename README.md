@@ -3,8 +3,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 SAV ME SUM-App
 
 Install & Quick Start
+
+
 Navigatate to frontend folder in cloned repository.
 
-npm install
-
-npm start
+npm install 
+npm start 
