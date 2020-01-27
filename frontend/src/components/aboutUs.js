@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 class AboutUs extends Component {
   render() {
     return (
       <div className="aboutUs">
-        <p>Hello from about Us component!</p>
+        <Link to='./aboutUS'>About</Link>
       </div>
     );
   }

@@ -38,11 +38,17 @@ button:hover{
   
 }
 .single-image{
+  display: flex;
   object-fit: cover;
   max-width: 150px;
-  height: 20%;
+ height: 20%;
   margin: 0;
   
+}
+.left1st{
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
 }
 .left-image-sidebar{
   padding-right: 0;
