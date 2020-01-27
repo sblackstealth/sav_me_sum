@@ -6,8 +6,8 @@ class AddDEvent extends Component {
     constructor(){
         super()
         this.state={
-            eventDate:null,
-            eventTime:null,
+            eventStart:null,
+            eventEnd:null,
             eventBorough:null,
             eventLoc:null,
             eventZip:null,
@@ -20,14 +20,14 @@ class AddDEvent extends Component {
         }
     }
         handleInputChange = e =>  {
-            const{eventDate,eventTime,eventBorough,eventLoc,eventZip,eventName,email,isVeg,donations,numberOfPortions}= this.state
+            const{eventStart, eventEnd,eventBorough,eventLoc,eventZip,eventName,email,isVeg,donations,numberOfPortions}= this.state
             this.setState({
                 [e.target.name]: e.target.value
             })
         }
         handleAddEventFormSubmit = e => {
             e.preventDefault();
-            const{eventDate,eventTime,eventBorough,eventLoc,eventZip,eventName,email,isVeg,donations,numberOfPortions}= this.state
+            const{eventStart, eventEnd,eventBorough,eventLoc,eventZip,eventName,email,isVeg,donations,numberOfPortions}= this.state
             this.state;
             // google
             //   .post("/addEvent", {
@@ -37,8 +37,8 @@ class AddDEvent extends Component {
             //   .then(() => {)}
                 axios
                   .post('/users/addDistributionEvent',{
-                    eventDate:eventDate,
-                    eventTime:eventTime,
+                    eventStart:eventStart,
+                    eventEnd:eventEnd,
                     eventBorough:eventBorough,
                     eventLoc:eventLoc,
                     eventZip:eventZip,
@@ -74,8 +74,8 @@ class AddDEvent extends Component {
       <div className="addDEvent">
        <form className='addEventForm'onChange={this.handleInputChange} onsubmit={this.handleAddEventFormSubmit}>
        
-    <input type='text' className='dateInput' placeholder='event Date'value='eventDate'> </input>
-    <input type='text' className='timeInput' placeholder='event Time'value='eventTime'> </input>
+    <input type='text' className='dateInput' placeholder='event Date'value='eventStart'> </input>
+    <input type='text' className='dateInput' placeholder='event Date'value='eventEnd'> </input>
     <input type='text' className='boroughInput' placeholder='event Borough'value='eventBorough'> </input>
     <input type='text' className='locationInput' placeholder='event Location'value='eventLoc'> </input>
     <input type='text' className='zipInput' placeholder='event Zipcode'value='eventZip'> </input>

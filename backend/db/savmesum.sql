@@ -19,8 +19,8 @@ CREATE TABLE users (
 
 CREATE TABLE events_d (
     event_id SERIAL PRIMARY KEY,
-    event_date VARCHAR,
-    event_time timestamp not null default CURRENT_TIMESTAMP, 
+    event_start timestamp not null default CURRENT_TIMESTAMP,
+    event_end timestamp,
     event_borough VARCHAR,
     event_location VARCHAR,
     event_zipcode VARCHAR,
@@ -43,8 +43,8 @@ CREATE TABLE events_d (
 
     CREATE TABLE events_r (
     event_id SERIAL PRIMARY KEY,
-    event_date VARCHAR,
-    event_time timestamp not null default CURRENT_TIMESTAMP, 
+    event_start timestamp not null default CURRENT_TIMESTAMP,
+    event_end timestamp,
     event_borough VARCHAR,
     event_location VARCHAR,
     event_zipcode VARCHAR,
@@ -68,7 +68,8 @@ CREATE TABLE events_d (
 CREATE TABLE dates(
     event_number SERIAL PRIMARY KEY,
     event_id SERIAL REFERENCES events (event_id),
-    event_date timestamp default CURRENT_TIMESTAMP,
+    event_start timestamp not null default CURRENT_TIMESTAMP,
+    event_end TIMESTAMP default NULL,
     event_closed BOOLEAN DEFAULT false);
 
 CREATE TABLE donations(
@@ -127,19 +128,19 @@ VALUES ('bronx','1460 grand concourse', '10451', 'thursday dinner at the food ki
  ('staten island','5 getting money plaza', '10451','safe supper','church1@gmail.com','distribution', ARRAY['chipotle'],ARRAY['Church'],False, ARRAY['Marlon'],ARRAY['Andre'],ARRAY['shredded beef','steak', 'pork','chicken','white rice', 'brown rice', 'tortilia wrap', 'sour cream', 'guacamole', 'cheese', 'lettuce'], true, 1, 2, 6, 6, ARRAY['Elon'], ARRAY['Eric']);
 
 
-INSERT INTO dates (event_id, event_date, event_closed )
-VALUES (1, 'thursday july 8 2018',true),
- (2,'thursday july 8 2018',true),
- (3,'thursday july 8 2018',true),
- (4,'thursday july 8 2018',true),
- (5,'thursday july 8 2018',true),
- (6,'thursday july 8 2018',true),
- (7, 'thursday july 8 2018',true),
- (8,'thursday july 8 2018',true),
- (9, 'thursday july 8 2018',true),
- (10,'thursday july 8 2018',true),
- (11, 'thursday july 8 2018',true),
- (12,'thursday july 8 2018',true);
+INSERT INTO dates (event_id, event_start, event_closed )
+VALUES (1, 'thursday july 8 2019',true),
+ (2,'thursday july 8 2019',true),
+ (3,'thursday july 8 2019',true),
+ (4,'thursday july 8 2019',true),
+ (5,'thursday july 8 2019',true),
+ (6,'thursday july 8 2019',true),
+ (7, 'thursday july 8 2019',true),
+ (8,'thursday july 8 2019',true),
+ (9, 'thursday july 8 2019',true),
+ (10,'thursday july 8 2019',true),
+ (11, 'thursday july 8 2019',true),
+ (12,'thursday july 8 2019',true);
 
 
 INSERT INTO donations (donation_number, donation_id, donation_name, user_id, donor_name,allergens,is_veg, rescuers,pass_check, events_servedat)
