@@ -4,7 +4,7 @@ class AboutUs extends Component {
   render() {
     return (
       <div className="aboutUs">
-        <p>Hello from aboutUs.js component!</p>
+        <p>Hello from about Us component!</p>
       </div>
     );
   }

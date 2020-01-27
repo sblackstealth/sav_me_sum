@@ -12,7 +12,7 @@ import RescuerAffidavit from './components/affidavits/rescuerAffidavit';
 import FoodieVolunteerAffidavit from './components/affidavits/foodieVolunteerAffidavit';
 import DonorHome from './components/home/donorHome';
 import FoodieHome from './components/home/foodieHome'
-import AddEvent from './components/event/addevent';
+//import AddEvent from './components/event/addevent';
 //import EditEvent from './components/event/editEvent';
 
 
@@ -67,24 +67,24 @@ class App extends Component {
         <img className="single-image" src="https://i.imgur.com/cOHnGCK.jpg" />
        </div>
        <div className="center-content">
-       <div >whaddup</div>
+       <div >Hello from app.js</div>
        
        
-        <AboutUs/>
-        <Link to='/home/affidavits/rescuerAffidavit/'> RESCUER AFFIDAVIT</Link><br/>
+        {/* <AboutUs/> */}
+        {/* <Link to='/home/affidavits/rescuerAffidavit/'> RESCUER AFFIDAVIT</Link><br/>
         <Link to='/home/affidavits/foodieVolunteerAffidavit'> FOODIE & VOLUNTEER AFFIDAVIT </Link>
-        
+         */}
        
        <Switch>
       <Route exact path='/users/login' component={LogIn} />
       <Route exact path='/users/register' component={Register} />
       <Route exact path='/' component={Home}user={user} />
       <Route exact path='/users/foodie/:userId' component={FoodieHome} />
-      <Route exact path='/users/donor/:userId' component={DonorHome} />
+      {/* <Route exact path='/users/donor/:userId' component={DonorHome} /> */}
       <Route exact path='/users/loginUser' component={DistributionEvent} />
       <Route exact path='/home/affidavits/rescuerAffidavit/' component={RescuerAffidavit}/>
       <Route exact path='/home/affidavits/foodieVolunteerAffidavit/' component={FoodieVolunteerAffidavit}/>
-      <Route exact path='/users/addevent/' component={AddEvent}/>
+      {/* <Route exact path='/users/addevent/' component={AddEvent}/> */}
       {/* <Route exact path='/users/editEvent' component={EditEvent}/> */}
       </Switch>
       </div>

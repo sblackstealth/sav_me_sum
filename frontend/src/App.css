@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
 }
 
 .App-logo {
@@ -40,7 +40,7 @@ button:hover{
 .single-image{
   object-fit: cover;
   max-width: 150px;
-  height: 150px;
+  height: 20%;
   margin: 0;
   
 }
@@ -48,11 +48,15 @@ button:hover{
   padding-right: 0;
   display: flex;
   flex-direction: column;
+  
 }
-
+.bigCalendar{
+height:1000px ;
+width: 104%;
+margin: 1px;
+}
 .right-image-sidebar{
-  padding-right:  0;
-  height: 100vh;
+  padding-right:0px;
   display: flex;
   flex-direction: column;
 }

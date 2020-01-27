@@ -16,7 +16,7 @@ class Calendar extends Component {
     let d = new Date()
     // expects year month daye hours minutes
     let eventList = [{/*this.state.events.map*/
-      title: "Event", 
+      title: "Food Rescue Event", 
       startDate: new Date(d.getFullYear(),d.getMonth(), d.getDate(), d.getHours(), d.getMinutes()), 
       endDate: new Date(d.getFullYear(),d.getMonth(), d.getDate(), d.getHours(), d.getMinutes()+60) 
     }]
@@ -30,6 +30,7 @@ console.log(d, eventList)
         endAccessor='endDate'
         views={['month','week','day','agenda']}
         defaultView='month'
+        
         />
         </div>
       );

@@ -23,15 +23,15 @@ class Home extends React.Component {
     console.log(user)
     return (
       <div>
-        HELLO FROM HOME
+        HELLO FROM HOME <br/>
         <button><Link to='/users/register'>register</Link></button><br/>
         <button><Link to='/users/login'>login</Link></button><br/>
   
         <AboutUs/>
-        <Calendar/>
-        <Link to= 'home/affidavits/rescuerAffidavit'> Rescuer Affidavit</Link>
-         <Link to='home/affidavits/foodieVolunteerAffidavit'>Foodie & Volunteer Affidavit </Link> 
         
+        <Link to= 'home/affidavits/rescuerAffidavit'> Rescuer Affidavit</Link><br/>
+        <Link to='home/affidavits/foodieVolunteerAffidavit'>Foodie & Volunteer Affidavit </Link> 
+        <Calendar/> 
         </div>)
   
   }
