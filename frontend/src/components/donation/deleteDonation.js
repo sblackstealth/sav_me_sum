@@ -10,4 +10,4 @@ class DeleteDonation extends Component {
   }
 }
 
-export default deleteDonation;
+export default DeleteDonation;

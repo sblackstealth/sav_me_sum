@@ -10,4 +10,4 @@ class AddRescueEvent extends Component {
   }
 }
 
-export default addRescueEvent;
+export default AddRescueEvent;

@@ -10,4 +10,4 @@ class EditDistributionEvent extends Component {
   }
 }
 
-export default editDistributionEvent;
+export default EditDistributionEvent;

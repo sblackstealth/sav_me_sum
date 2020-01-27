@@ -10,4 +10,4 @@ class DeleteDistributionEvent extends Component {
   }
 }
 
-export default deleteDistributionEvent;
+export default DeleteDistributionEvent;

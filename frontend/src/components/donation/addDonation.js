@@ -10,4 +10,4 @@ class AddDonation extends Component {
   }
 }
 
-export default addDonation;
+export default AddDonation;

@@ -10,4 +10,4 @@ class DeleteRescueEvent extends Component {
   }
 }
 
-export default deleteRescueEvent;
+export default DeleteRescueEvent;

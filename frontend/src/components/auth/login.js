@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import setUser from "../../App"
-import LoginUserButton from '../buttons/loginButton';
 import {Redirect} from 'react-router-dom';
 
 

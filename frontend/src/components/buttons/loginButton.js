@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {handleClickLogOut} from '../auth/login';
+// import {handleClickLogOut} from '../auth/login';
 
 class LogoutUserButton extends Component {
   render() {

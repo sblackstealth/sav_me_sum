@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import axios from "axios";
-import {Link, Router, Switch, Route} from 'react-router-dom';
+import React from 'react';
+import {Link,} from 'react-router-dom';
 import AboutUs from '../aboutUs';
 import Calendar from '../calendar/distributionEvents';
 

@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import RescueEvent from '../calendar/rescueEvents';
 import axios from "axios";
-import LogOut from '../auth/logout';
-import app from'../../App';
-import SetUser from '../../App';
 
 
 
@@ -24,8 +20,7 @@ class DonorHome extends Component {
   render() {
    return 
       <div className= "donorHome">
-        <LogOut/>
-       <RescueEvent/> 
+       
       </div>
   }
 }

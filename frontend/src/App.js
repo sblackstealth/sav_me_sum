@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
-import {Link, Router, Switch, Route} from 'react-router-dom';
-import logo from './logo.svg';
+import {Switch, Route} from 'react-router-dom';
 import './App.css';
 import Register from './components/auth/registeruser';
 import Home from './components/home/home';
 import axios from "axios";
 import LogIn from './components/auth/login';
 import DistributionEvent from './components/calendar/distributionEvents';
-import AboutUs from './components/aboutUs';
 import RescuerAffidavit from './components/affidavits/rescuerAffidavit';
 import FoodieVolunteerAffidavit from './components/affidavits/foodieVolunteerAffidavit';
-import DonorHome from './components/home/donorHome';
-import FoodieHome from './components/home/foodieHome'
-//import AddEvent from './components/event/addevent';
-//import EditEvent from './components/event/editEvent';
+import FoodieHome from './components/home/foodieHome';
 
 
 

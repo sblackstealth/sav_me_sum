@@ -10,4 +10,4 @@ class DeleteEvent extends Component {
   }
 }
 
-export default deleteEvent;
+export default DeleteEvent;
