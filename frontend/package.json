@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "ajv": "^6.0.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bootstrap": "^3.3.7",
     "flow-bin": "^0.69.0",
     "fs": "0.0.1-security",
