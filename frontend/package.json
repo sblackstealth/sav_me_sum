@@ -9,7 +9,7 @@
     "flow-bin": "^0.69.0",
     "fs": "0.0.1-security",
     "googleapis": "^27.0.0",
-    "moment": "^2.22.2",
+    "moment": "^2.29.4",
     "npm": "^6.1.0",
     "react": "^16.3.1",
     "react-big-calendar": "^0.19.2",
